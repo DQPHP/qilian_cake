@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="javascripts/all.js" type="text/javascript"></script>
+
+      <script>
+        $(function() {
+          setupLanguages(["shell","php","swift"]);
+        });
+      </script>
+  </head>
+
+  <body class="index">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="php">php</a>
+              <a href="#" data-language-name="swift">swift</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='qilian.jp'>Updated by qilian tech team</a></li>
+            <li><a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="简介">简介</h1>
+
+<p><em>选择七联，遇见美好</em>。</p>
+
+<p>七联APP的相关API文档。</p>
+
+<h1 id="用户">用户</h1>
+
+<p>用户接口的相关API</p>
+
+<h2 id="注册">注册</h2>
+
+<blockquote>
+<p>用如下代码测试注册：</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># 通过shell，你可以直接使用curl来访问API</span>
+curl <span class="s2">"http://qilian.jp/appointment/api/register"</span>
+  --form <span class="s2">"mail=test@mobile.com&amp;uuid=abcdefghijklmnopqrstuvwxyzabcdef"</span>
+</code></pre>
+<pre class="highlight php"><code></code></pre>
+<pre class="highlight swift"><code></code></pre>
+
+<blockquote>
+<p>请确认测试邮箱为真实有效地邮箱，后续会有邮件发送确认.
+uuid为32为唯一随机串</p>
+
+<p>注册成功，返回结果:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ok"</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>注册失败，返回结果：</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"error"</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+<p>用户初始化APP时输入邮箱注册</p>
+
+<h3 id="http请求">HTTP请求</h3>
+
+<p><code class="prettyprint">POST http://qilian.jp/appointment/api/register</code></p>
+
+<h3 id="请求参数">请求参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mail</td>
+<td>无</td>
+<td>用户注册时使用的新邮箱</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>无</td>
+<td>手机端默认生成</td>
+</tr>
+</tbody></table>
+
+<h2 id="重置邮箱">重置邮箱</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/reset?uuid=abcdefghijklmnopqrstuvwxyzabcdef"</span>
+</code></pre>
+<pre class="highlight swift"><code></code></pre>
+<pre class="highlight php"><code></code></pre>
+
+<blockquote>
+<p>重置成功，返回结果：</p>
+</blockquote>
+<pre class="highlight html"><code>您的邮箱已重置，请在手机端重新注册
+</code></pre>
+
+<blockquote>
+<p>重置失败，返回结果：</p>
+</blockquote>
+<pre class="highlight html"><code>用户不存在，请在直接在手机端登录
+</code></pre>
+
+<p>这个接口可以重置用户手机端的邮箱</p>
+
+<h3 id="http请求">HTTP请求</h3>
+
+<p><code class="prettyprint">GET http://qilian.jp/appointment/api/reset</code></p>
+
+<h3 id="请求参数">请求参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>无</td>
+<td>用户唯一标识码</td>
+</tr>
+</tbody></table>
+
+<h1 id="课程">课程</h1>
+
+<p>课程接口的相关API</p>
+
+<h3 id="http请求">HTTP请求</h3>
+
+<p><code class="prettyprint">GET http://qilian.jp/appointment/api/courses</code></p>
+
+<h3 id="请求参数">请求参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>course_id</td>
+<td>无</td>
+<td>课程ID</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>无</td>
+<td>用户唯一标识码</td>
+</tr>
+</tbody></table>
+
+<h2 id="所有课程">所有课程</h2>
+
+<p>获取所有课程列表，具体格式如右图测试数据所示</p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/courses"</span>
+</code></pre>
+<pre class="highlight php"><code></code></pre>
+<pre class="highlight swift"><code></code></pre>
+
+<blockquote>
+<p>不带参数时的返回结果</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Course"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学会一门编程语言需要几个小时？"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e83917608013d68ea840fb36c83637d.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 18:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 21:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby 是一种具有快速搭建和卓越的开发能力的编程语言。本期主题演讲，嘉宾Gyorou将和大家分享个人学习Ruby的心得体会，讲述一只孤独的程序猿如何忠实于自己的愿望去追求自己的热爱，在编程开发的道路上从踽踽独行，一路coding到飞起的故事。\\\r\\\n\\\r\\\n不管你是否有过编程经验, 是否接触过Ruby, 如果你有一颗好奇心, 或者想要找到进阶交流的小伙伴，就来七联和Gyorou一起探索惊喜的Ruby世界吧！"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"【活动流程】\\\r\\\n1. 热身活动: 10分钟，所有人认识所有人\\\r\\\n2. 嘉宾分享\\\r\\\n3. 自我介绍，修士的研究内容以及个人求职经历。\\\r\\\n4. 以个人学习Ruby经历介绍学习编程语言的一些心得以及一些不负责任的经验。\\\r\\\n5. 展示自己写过的一些app\\\r\\\n6. 开放分享: 参与者现场互动分享，现场xxx会教大家用rails写一个自己的TodoList小应用。\\\r\\\n"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tota_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"curr_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000円"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 20:57:37"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rob.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob修士就读于庆应义塾大学大学院。在大学院期间，曾经经过学校推荐，参加荷兰代尔夫特工科大学的交换留学。也是因为这次交换留学，没有时间参加所谓的暑期实习，甚至自己人生第一场就职说明会也只能安排在12月底。但正是因为这种看起来起步晚，无正规实习经验的危机感，使自己更加努力，在3月26日拿到了第一家大手石油公司内定，并在4月初拿到了大手证券N社内定。Rob虽然担当金融部分的讲师，但对能源、化学、商社、海运、物流、咨询等业界也有深刻理解。更重要的是，Rob通过自己经验总结出来的3个月速度就活方法，能够帮助你迅速的找到就活的自我，就职的自我，以及未来的自我。"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"university"</span><span class="p">:</span><span class="w"> </span><span class="s2">"慶応大学"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"金融大手企業N社"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-26 10:45:42"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"course_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学会一门编程语言需要几个小时？"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datetime_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 18:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datetime_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 21:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 20:57:37"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Course"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Business English + Global Mindset Workshop"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b9d5531c1b24cb1f7456e572c0873dbf.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-20 18:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-20 20:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wanna practice English communication skills?\\\r\\\nWanna apply your skills to resolve business problems?\\\r\\\nJoin our discussion in the Business English + Global Mindset Workshop. \\\r\\\nNo boring lectures! But be prepared to take ACTION:\\\r\\\n・To practice business English\\\r\\\n・To learn business skills\\\r\\\n・To better understand important business theories, tools and methods\\\r\\\n・To be open-minded and observe outside world!\\\r\\\n"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Theme of this week\\\r\\\nA Comparative Study of Communication Styles among Chinese, Japanese and Americans"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tota_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"curr_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000円"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"- Special price for Students!"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-20 04:44:24"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuma"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kuma.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuma 修士毕业于庆应义塾大学，拥有他人不可想象的五所大学经历：武汉大学、华中科技大学、北海道大学、庆应义塾大学、华盛顿大学交换留学。他参与过上到宇宙下到深海的研究课题，发表过4篇国际论文。暑假期间，Kuma参加了IBM咨询部门、C社、以及日挥的实习。并在4月获得外资IT大手C社、IBM、Docomo的内定。他曾参加P＆G、JP Morgan、Docomo、NTT communications、Google、IBM等超大手公司的面试，覆盖几乎所有业界，ES通过率更达到9成以上。Kuma擅长完全的个性化就职，有很多奇葩的技巧区别自我。Kuma的面试可以总结为【傲娇】! 曾有5分钟令考官叹服，直接进入下一轮的经历。"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"university"</span><span class="p">:</span><span class="w"> </span><span class="s2">"慶応大学"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT大手企業C社"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Course"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"資産運用讲座"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230c2fa2959d7e2dbdbe75ab60ac296a.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-13 06:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-13 08:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"你是否想过、只要努力工作、存钱、交好保险，就不必担心将来？\\\r\\\n你是否认为、资产运营门槛太高、理财相关知识缺乏，就放弃自我理财？\\\r\\\n\\\r\\\n当下社会少子化与老龄化问题加重、加上年金问题、医疗改革、延迟退休等众多社会现状，只是依赖社会保障生存是不可靠的。\\\r\\\n越来越多的人为了保护自身与家人、开始将目光投向资产运营、但是我们和欧美人不同、大多数人在接受基础教育时没有学习过资产运营的知识、在自我理财时屡屡失败。\\\r\\\n\\\r\\\n如何分散风险、规划好个人资产、让您的财富稳定升值，高级金融讲师中村老师将通过分析众多的成功案例、归纳基础理财知识、教受大家如何辨别优质的理财产品、规避投资风险、带您走上人生巅峰。"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1. 资产运营的解释\\\r\\\n2. 为什么要做资产运营\\\r\\\n3. 资产运营的好处\\\r\\\n4. 资产运营的方式\\\r\\\n"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tota_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"curr_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-20 04:44:34"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rob.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob修士就读于庆应义塾大学大学院。在大学院期间，曾经经过学校推荐，参加荷兰代尔夫特工科大学的交换留学。也是因为这次交换留学，没有时间参加所谓的暑期实习，甚至自己人生第一场就职说明会也只能安排在12月底。但正是因为这种看起来起步晚，无正规实习经验的危机感，使自己更加努力，在3月26日拿到了第一家大手石油公司内定，并在4月初拿到了大手证券N社内定。Rob虽然担当金融部分的讲师，但对能源、化学、商社、海运、物流、咨询等业界也有深刻理解。更重要的是，Rob通过自己经验总结出来的3个月速度就活方法，能够帮助你迅速的找到就活的自我，就职的自我，以及未来的自我。"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"university"</span><span class="p">:</span><span class="w"> </span><span class="s2">"慶応大学"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"金融大手企業N社"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-26 10:45:42"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h2 id="获取某个特定课程">获取某个特定课程</h2>
+
+<p>获取特定课程信息，具体格式如右图测试数据所示</p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/courses?course</span><span class="se">\_</span><span class="s2">id=2"</span>
+</code></pre>
+<pre class="highlight php"><code></code></pre>
+<pre class="highlight swift"><code></code></pre>
+
+<blockquote>
+<p>course_id=2时的返回结果</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Course"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学会一门编程语言需要几个小时？"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e83917608013d68ea840fb36c83637d.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"starttime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 18:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 21:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby 是一种具有快速搭建和卓越的开发能力的编程语言。本期主题演讲，嘉宾Gyorou将和大家分享个人学习Ruby的心得体会，讲述一只孤独的程序猿如何忠实于自己的愿望去追求自己的热爱，在编程开发的道路上从踽踽独行，一路coding到飞起的故事。\\\r\\\n\\\r\\\n不管你是否有过编程经验, 是否接触过Ruby, 如果你有一颗好奇心, 或者想要找到进阶交流的小伙伴，就来七联和Gyorou一起探索惊喜的Ruby世界吧！"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"【活动流程】\\\r\\\n1. 热身活动: 10分钟，所有人认识所有人\\\r\\\n2. 嘉宾分享\\\r\\\n3. 自我介绍，修士的研究内容以及个人求职经历。\\\r\\\n4. 以个人学习Ruby经历介绍学习编程语言的一些心得以及一些不负责任的经验。\\\r\\\n5. 展示自己写过的一些app\\\r\\\n6. 开放分享: 参与者现场互动分享，现场xxx会教大家用rails写一个自己的TodoList小应用。\\\r\\\n"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tota_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"curr_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000円"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 20:57:37"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rob.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob修士就读于庆应义塾大学大学院。在大学院期间，曾经经过学校推荐，参加荷兰代尔夫特工科大学的交换留学。也是因为这次交换留学，没有时间参加所谓的暑期实习，甚至自己人生第一场就职说明会也只能安排在12月底。但正是因为这种看起来起步晚，无正规实习经验的危机感，使自己更加努力，在3月26日拿到了第一家大手石油公司内定，并在4月初拿到了大手证券N社内定。Rob虽然担当金融部分的讲师，但对能源、化学、商社、海运、物流、咨询等业界也有深刻理解。更重要的是，Rob通过自己经验总结出来的3个月速度就活方法，能够帮助你迅速的找到就活的自我，就职的自我，以及未来的自我。"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"university"</span><span class="p">:</span><span class="w"> </span><span class="s2">"慶応大学"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"金融大手企業N社"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-26 10:45:42"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"course_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学会一门编程语言需要几个小时？"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datetime_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 18:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datetime_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 21:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 20:57:37"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+          <h1 id="errors">Errors</h1>
+
+<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified kitten could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&rsquo;m a teapot</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="php">php</a>
+                <a href="#" data-language-name="swift">swift</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

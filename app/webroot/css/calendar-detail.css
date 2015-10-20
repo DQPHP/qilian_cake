@@ -1,0 +1,162 @@
+/* ====================================================================================================================
+*  calendar-detail.css
+* ====================================================================================================================*/
+  font-family: {
+    "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
+  }
+
+  /*背景底色*/
+  body{
+      background-color: #fafafa;
+  }
+
+  /*标题图片的定义*/
+  .header-banner{
+    background: url(../img/header-img.jpg) no-repeat center;
+    background-size: cover;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    text-align: center;
+    color:700px;
+    margin-bottom: 5px;
+  }
+
+  .header-message {
+    position: relative;
+  }
+
+  /*标题文字*/
+  .header-message > h1 {
+    margin: 0;
+    font-size: 5em;
+    color: white;
+  }
+
+  /*华丽的分割线*/
+  .header-message > hr{
+    width: 85%;
+    display:block;
+  }
+
+  /*华丽的分割线*/
+  .header-message > h3{
+    color: white;
+    font-size: 25px;
+    font-weight: lighter;
+  }
+
+  /*----- 头部定义完成 ------*/
+
+ h4 a{
+       color: #444444;
+       font-weight: normal;
+   }
+
+  .company-main-layout{
+    padding: 0px;
+    padding-bottom: 40px;
+  }
+
+  /* 图片占据整个空间，所以设定padding=0px */
+  .company-main-layout > .col-md-12{
+    padding: 0px;
+  }
+
+  /* 公司图片 */
+  .company-cover-img{
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+  }
+
+  /* 七联评价 */
+  .fa-star{
+    color: #f1c40f;
+  }
+
+  /* 表格的颜色 */
+  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgba(26, 188, 156, 0.1);
+  }
+
+  /* 表格整体居中 */
+  .table tbody>tr>td{
+    vertical-align: middle;
+  }
+
+  /*表格的背景颜色*/
+  .table-bgd-color{
+    background-color: white;
+  }
+
+  /* 鼠标滑过表格时候的颜色 */
+  /*a:hover{
+    background-color: rgba(46, 204, 113,0.6);
+  }*/
+
+  /* ====================================================================================================================
+  *  右边栏
+  * ====================================================================================================================*/
+
+  .sidebar-layouts{
+    /*侧边栏的layout*/
+    margin: 10px;
+    padding:10px;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-bottom-color:#bdc3c7;
+    }
+
+  .sidebar-col-md-4{
+    /*用来宣传我们的专栏文章*/
+    /*为了让图片可以在右侧占据整个部分，这里设定margin，padding为*/
+    /*带来的结果就是所有的其他的元素，都需要相对应的设定margin和padding*/
+    margin: 0px;
+    padding: 0px;
+  }
+  .sidebar-section-title{
+    /*定义所有sidebar的每一个section的title*/
+    font-weight: bolder;
+    font-size: 18px;
+  }
+
+  .sidebar-tags{
+    /* 侧边栏 tags 定义*/
+    margin-bottom: 8px;
+    margin-right: 8px;
+    border-radius: 25px;
+    opacity: 0.6;
+  }
+  .sidebar-topPick-block{
+    /*针对side-bar block的定义*/
+    display: block;
+    padding: 5px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-bottom-color: #eeeeee;
+    color:#7f8c8d;
+    font-size: 13px;
+  }
+
+  .sidebar-topPick-title{
+    /*侧边栏top pick的文章标题*/
+    line-height: 150%;
+  }
+
+  .side-bar-topPick-description{
+    /*描述性文字的定义*/
+    line-height: 150%;
+    opacity: 100%;
+  }
+  .sidebar-topPick-block > h4{
+    font-size: 15px;
+  }
+  .fa-star{
+    /*对小星星的定义*/
+    color: #f1c40f;
+    margin-right: 3px;
+  }
+  .fa-tages,.fa-thumb-tack{
+    margin-right: 5px;
+  }
