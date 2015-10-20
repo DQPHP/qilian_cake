@@ -1,0 +1,819 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>七联API</title>
+
+    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="javascripts/all.js" type="text/javascript"></script>
+
+      <script>
+        $(function() {
+          setupLanguages(["shell","php","swift"]);
+        });
+      </script>
+  </head>
+
+  <body class="index">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="php">php</a>
+              <a href="#" data-language-name="swift">swift</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="简介">简介</h1>
+
+<p>W选择七联，遇见美好。</p>
+
+<p>七联APP的相关API文档。</p>
+
+<h1 id="用户">用户</h1>
+
+<p>用户接口的相关API</p>
+
+<h2 id="注册">注册</h2>
+
+<blockquote>
+<p>用如下代码测试注册：</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># 通过shell，你可以直接使用curl来访问API</span>
+curl <span class="s2">"http://qilian.jp/appointment/api/register"</span>
+  --form <span class="s2">"mail=test@mobile.com&amp;uuid=abcdefghijklmnopqrstuvwxyzabcdef"</span>
+</code></pre>
+<pre class="highlight php"><code></code></pre>
+<pre class="highlight swift"><code></code></pre>
+
+<blockquote>
+<p>请确认测试邮箱为真实有效地邮箱，后续会有邮件发送确认.
+uuid为32为唯一随机串</p>
+
+<p>注册成功，返回结果:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"ok"</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>注册失败，返回结果：</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"error"</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+<p>用户初始化APP时输入邮箱注册</p>
+
+<h3 id="http请求">HTTP请求</h3>
+
+<p><code class="prettyprint">POST http://qilian.jp/appointment/api/register</code></p>
+
+<h3 id="请求参数">请求参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mail</td>
+<td>无</td>
+<td>用户注册时使用的新邮箱</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>无</td>
+<td>手机端默认生成</td>
+</tr>
+</tbody></table>
+
+<h2 id="重置邮箱">重置邮箱</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/reset?uuid=abcdefghijklmnopqrstuvwxyzabcdef"</span>
+</code></pre>
+<pre class="highlight swift"><code></code></pre>
+<pre class="highlight php"><code></code></pre>
+
+<blockquote>
+<p>重置成功，返回结果：</p>
+</blockquote>
+<pre class="highlight html"><code>您的邮箱已重置，请在手机端重新注册
+</code></pre>
+
+<blockquote>
+<p>重置失败，返回结果：</p>
+</blockquote>
+<pre class="highlight html"><code>用户不存在，请在直接在手机端登录
+</code></pre>
+
+<p>这个接口可以重置用户手机端的邮箱</p>
+
+<h3 id="http请求">HTTP请求</h3>
+
+<p><code class="prettyprint">GET http://qilian.jp/appointment/api/reset</code></p>
+
+<h3 id="请求参数">请求参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>无</td>
+<td>用户唯一标识码</td>
+</tr>
+</tbody></table>
+
+<h1 id="课程">课程</h1>
+
+<p>课程接口的相关API</p>
+
+<h3 id="http请求">HTTP请求</h3>
+
+<p><code class="prettyprint">GET http://qilian.jp/appointment/api/courses</code></p>
+
+<h3 id="请求参数">请求参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>course_id</td>
+<td>无</td>
+<td>课程ID</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>无</td>
+<td>用户唯一标识码</td>
+</tr>
+</tbody></table>
+
+<h2 id="所有课程">所有课程</h2>
+
+<p>获取所有课程列表，具体格式如右图测试数据所示</p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/courses"</span>
+</code></pre>
+<pre class="highlight php"><code></code></pre>
+<pre class="highlight swift"><code></code></pre>
+
+<blockquote>
+<p>不带参数时的返回结果</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Course"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学会一门编程语言需要几个小时？"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e83917608013d68ea840fb36c83637d.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starttime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 18:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 21:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby 是一种具有快速搭建和卓越的开发能力的编程语言。本期主题演讲，嘉宾Gyorou将和大家分享个人学习Ruby的心得体会，讲述一只孤独的程序猿如何忠实于自己的愿望去追求自己的热爱，在编程开发的道路上从踽踽独行，一路coding到飞起的故事。\\\r\\\n\\\r\\\n不管你是否有过编程经验, 是否接触过Ruby, 如果你有一颗好奇心, 或者想要找到进阶交流的小伙伴，就来七联和Gyorou一起探索惊喜的Ruby世界吧！"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"【活动流程】\\\r\\\n1. 热身活动: 10分钟，所有人认识所有人\\\r\\\n2. 嘉宾分享\\\r\\\n3. 自我介绍，修士的研究内容以及个人求职经历。\\\r\\\n4. 以个人学习Ruby经历介绍学习编程语言的一些心得以及一些不负责任的经验。\\\r\\\n5. 展示自己写过的一些app\\\r\\\n6. 开放分享: 参与者现场互动分享，现场xxx会教大家用rails写一个自己的TodoList小应用。\\\r\\\n"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tota_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"curr_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000円"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 20:57:37"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rob.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob修士就读于庆应义塾大学大学院。在大学院期间，曾经经过学校推荐，参加荷兰代尔夫特工科大学的交换留学。也是因为这次交换留学，没有时间参加所谓的暑期实习，甚至自己人生第一场就职说明会也只能安排在12月底。但正是因为这种看起来起步晚，无正规实习经验的危机感，使自己更加努力，在3月26日拿到了第一家大手石油公司内定，并在4月初拿到了大手证券N社内定。Rob虽然担当金融部分的讲师，但对能源、化学、商社、海运、物流、咨询等业界也有深刻理解。更重要的是，Rob通过自己经验总结出来的3个月速度就活方法，能够帮助你迅速的找到就活的自我，就职的自我，以及未来的自我。"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"university"</span><span class="p">:</span><span class="w"> </span><span class="s2">"慶応大学"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"金融大手企業N社"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-26 10:45:42"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"Schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"course_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学会一门编程语言需要几个小时？"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 18:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 21:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"current"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 20:57:37"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Course"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Business English + Global Mindset Workshop"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b9d5531c1b24cb1f7456e572c0873dbf.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starttime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-20 18:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-20 20:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wanna practice English communication skills?\\\r\\\nWanna apply your skills to resolve business problems?\\\r\\\nJoin our discussion in the Business English + Global Mindset Workshop. \\\r\\\nNo boring lectures! But be prepared to take ACTION:\\\r\\\n・To practice business English\\\r\\\n・To learn business skills\\\r\\\n・To better understand important business theories, tools and methods\\\r\\\n・To be open-minded and observe outside world!\\\r\\\n"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Theme of this week\\\r\\\nA Comparative Study of Communication Styles among Chinese, Japanese and Americans"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tota_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"curr_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000円"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"- Special price for Students!"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-20 04:44:24"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuma"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kuma.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuma 修士毕业于庆应义塾大学，拥有他人不可想象的五所大学经历：武汉大学、华中科技大学、北海道大学、庆应义塾大学、华盛顿大学交换留学。他参与过上到宇宙下到深海的研究课题，发表过4篇国际论文。暑假期间，Kuma参加了IBM咨询部门、C社、以及日挥的实习。并在4月获得外资IT大手C社、IBM、Docomo的内定。他曾参加P＆G、JP Morgan、Docomo、NTT communications、Google、IBM等超大手公司的面试，覆盖几乎所有业界，ES通过率更达到9成以上。Kuma擅长完全的个性化就职，有很多奇葩的技巧区别自我。Kuma的面试可以总结为【傲娇】! 曾有5分钟令考官叹服，直接进入下一轮的经历。"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"university"</span><span class="p">:</span><span class="w"> </span><span class="s2">"慶応大学"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT大手企業C社"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"Schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Course"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"資産運用讲座"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230c2fa2959d7e2dbdbe75ab60ac296a.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starttime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-13 06:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-13 08:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"你是否想过、只要努力工作、存钱、交好保险，就不必担心将来？\\\r\\\n你是否认为、资产运营门槛太高、理财相关知识缺乏，就放弃自我理财？\\\r\\\n\\\r\\\n当下社会少子化与老龄化问题加重、加上年金问题、医疗改革、延迟退休等众多社会现状，只是依赖社会保障生存是不可靠的。\\\r\\\n越来越多的人为了保护自身与家人、开始将目光投向资产运营、但是我们和欧美人不同、大多数人在接受基础教育时没有学习过资产运营的知识、在自我理财时屡屡失败。\\\r\\\n\\\r\\\n如何分散风险、规划好个人资产、让您的财富稳定升值，高级金融讲师中村老师将通过分析众多的成功案例、归纳基础理财知识、教受大家如何辨别优质的理财产品、规避投资风险、带您走上人生巅峰。"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1. 资产运营的解释\\\r\\\n2. 为什么要做资产运营\\\r\\\n3. 资产运营的好处\\\r\\\n4. 资产运营的方式\\\r\\\n"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tota_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"curr_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-20 04:44:34"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rob.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob修士就读于庆应义塾大学大学院。在大学院期间，曾经经过学校推荐，参加荷兰代尔夫特工科大学的交换留学。也是因为这次交换留学，没有时间参加所谓的暑期实习，甚至自己人生第一场就职说明会也只能安排在12月底。但正是因为这种看起来起步晚，无正规实习经验的危机感，使自己更加努力，在3月26日拿到了第一家大手石油公司内定，并在4月初拿到了大手证券N社内定。Rob虽然担当金融部分的讲师，但对能源、化学、商社、海运、物流、咨询等业界也有深刻理解。更重要的是，Rob通过自己经验总结出来的3个月速度就活方法，能够帮助你迅速的找到就活的自我，就职的自我，以及未来的自我。"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"university"</span><span class="p">:</span><span class="w"> </span><span class="s2">"慶応大学"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"金融大手企業N社"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-26 10:45:42"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"Schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h2 id="获取某个特定课程">获取某个特定课程</h2>
+
+<p>获取特定课程信息，具体格式如右图测试数据所示</p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/courses?course</span><span class="se">\_</span><span class="s2">id=2"</span>
+</code></pre>
+<pre class="highlight php"><code></code></pre>
+<pre class="highlight swift"><code></code></pre>
+
+<blockquote>
+<p>course_id=2时的返回结果</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Course"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学会一门编程语言需要几个小时？"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e83917608013d68ea840fb36c83637d.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starttime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 18:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 21:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby 是一种具有快速搭建和卓越的开发能力的编程语言。本期主题演讲，嘉宾Gyorou将和大家分享个人学习Ruby的心得体会，讲述一只孤独的程序猿如何忠实于自己的愿望去追求自己的热爱，在编程开发的道路上从踽踽独行，一路coding到飞起的故事。\\\r\\\n\\\r\\\n不管你是否有过编程经验, 是否接触过Ruby, 如果你有一颗好奇心, 或者想要找到进阶交流的小伙伴，就来七联和Gyorou一起探索惊喜的Ruby世界吧！"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"【活动流程】\\\r\\\n1. 热身活动: 10分钟，所有人认识所有人\\\r\\\n2. 嘉宾分享\\\r\\\n3. 自我介绍，修士的研究内容以及个人求职经历。\\\r\\\n4. 以个人学习Ruby经历介绍学习编程语言的一些心得以及一些不负责任的经验。\\\r\\\n5. 展示自己写过的一些app\\\r\\\n6. 开放分享: 参与者现场互动分享，现场xxx会教大家用rails写一个自己的TodoList小应用。\\\r\\\n"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tota_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"curr_attendee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000円"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 20:57:37"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rob.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rob修士就读于庆应义塾大学大学院。在大学院期间，曾经经过学校推荐，参加荷兰代尔夫特工科大学的交换留学。也是因为这次交换留学，没有时间参加所谓的暑期实习，甚至自己人生第一场就职说明会也只能安排在12月底。但正是因为这种看起来起步晚，无正规实习经验的危机感，使自己更加努力，在3月26日拿到了第一家大手石油公司内定，并在4月初拿到了大手证券N社内定。Rob虽然担当金融部分的讲师，但对能源、化学、商社、海运、物流、咨询等业界也有深刻理解。更重要的是，Rob通过自己经验总结出来的3个月速度就活方法，能够帮助你迅速的找到就活的自我，就职的自我，以及未来的自我。"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"university"</span><span class="p">:</span><span class="w"> </span><span class="s2">"慶応大学"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"金融大手企業N社"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-26 10:45:42"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"Schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"course_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学会一门编程语言需要几个小时？"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-04 18:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 21:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"〒101-0024 東京都千代田区神田和\\\b泉1-11-17 プラントビル2階"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"current"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-02 20:57:37"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h1 id="资讯">资讯</h1>
+
+<h2 id="资讯分类">资讯分类</h2>
+
+<blockquote>
+<p>获取资讯的所有分类</p>
+</blockquote>
+<pre class="highlight php"><code>curl "http://qilian.jp/appointment/api/category.json"
+</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/category.json"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ye-jie-yan-jiu"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u696d\u754c\u7814\u7a76"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"border_left_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#f1c40f"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"border_left_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#f1c40f"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jiu-zhi-jin-li"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u5c31\u804c\u7ecf\u5386"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"border_left_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#e67e22"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhuan-lan"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u4e13\u680f"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"border_left_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#2ecc71"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>将返回资讯文章中用到的的所有分类</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://qilian.jp/appointment/api/category.json</code></p>
+
+<h3 id="返回结果">返回结果</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>分类ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>分类名称</td>
+</tr>
+<tr>
+<td>count</td>
+<td>该分类共有文章数量</td>
+</tr>
+</tbody></table>
+
+<h2 id="详细资讯">详细资讯</h2>
+
+<blockquote>
+<p>参数 id </p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/news_detail.json?id=165"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"Post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"165"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u3010\u4e03\u8054\u30fb\u5b66\u4e60\u4f1a\u3011\u65e5\u5546\u7c3f\u8a18\uff13\u7d1a\u8d44\u683c\u8003\u8bd5\u8f85\u5bfc\u73ed\u7b2c\u4e8c\u671f"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u7ecf\u8425\u548c\u8d22\u52a1\u4e4b\u95f4\u6709\u7740\u5bc6\u4e0d\u53ef\u5206\u7684\u5173\u8054\uff0c\u4e00\u4e2a\u516c\u53f8\u662f\u5426\u4f1a\u5012\u95ed\uff0c\u5173\u952e\u8981\u770b\u8981\u516c\u53f8\u7684\u8d44\u91d1\u6d41\u662f\u5426\u987a\u5229\u5faa\u73af\u3002\u6709\u7684\u7ae5\u978b\u8bef\u8ba4\u4e3a\u8d22\u52a1\u7684\u4e8b\uff0c\u548c\u5176\u4ed6\u804c\u79cd\u65e0\u5173\u3002\u5176\u5b9e\u7c3f\u8a18\u5728\u5f88\u591a\u516c\u53f8\u5df2\u6210\u4e3a\u793e\u5458\u7684\u4e00\u9879\u57fa\u672c\u6280\u80fd\u8981\u6c42"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"![boki-title](http:\/\/qilian.jp\/appointment\/img\/original\/20150801-course-boki-title.jpg)\r\n\r\n\r\n### 1. \u65e5\u5546\u8584\u8bb0\u7b80\u4ecb\r\n\u7ecf\u8425\u548c\u8d22\u52a1\u4e4b\u95f4\u6709\u7740\u5bc6\u4e0d\u53ef\u5206\u7684\u5173\u8054\uff0c\u4e00\u4e2a\u516c\u53f8\u662f\u5426\u4f1a\u5012\u95ed\uff0c\u5173\u952e\u8981\u770b\u8981\u516c\u53f8\u7684\u8d44\u91d1\u6d41\u662f\u5426\u987a\u5229\u5faa\u73af\u3002\u6709\u7684\u7ae5\u978b\u8bef\u8ba4\u4e3a\u8d22\u52a1\u7684\u4e8b\uff0c\u548c\u5176\u4ed6\u804c\u79cd\u65e0\u5173\u3002\u5176\u5b9e\u7c3f\u8a18\u5728\u5f88\u591a\u516c\u53f8\u5df2\u6210\u4e3a\u793e\u5458\u7684\u4e00\u9879\u57fa\u672c\u6280\u80fd\u8981\u6c42\u3002\r\n\r\n\u4e3e\u4e2a\u4f8b\u5b50\uff0c\u300c\u4e09\u4e95\u7269\u7523\u306f\u4e09\u5e74\u524d\u304b\u3089\u8ca1\u52d9\u7814\u4fee\u3092\u5f37\u5316\u3002\u65b0\u5165\u793e\u54e1\u5168\u54e1\u306b\u65e9\u6025\u7c3f\u8a18\u4e09\u7d1a\u691c\u5b9a\u306b\u5408\u683c\u3057\u3001\u4e09\u5e74\u76ee\u307e\u3067\u306b\u5408\u8a08\u5341\u516d\u6642\u9593\u306e\u8ca1\u52d9\u4f1a\u8a08\u8b1b\u5ea7\u3092\u5c65\u4fee\u3059\u308b\u3088\u3046\u7fa9\u52d9\u3064\u3051\u3066\u3044\u308b\u3002\u300d\uff08\u6458\u81ea2007\u5e743\u67085\u65e5\u65e5\u672c\u7ecf\u6d4e\u65b0\u95fb\uff09\u3002\u53e6\u5916\uff0c\u5728\u65e5\u7d4c\u30ad\u30e3\u30ea\u30a2\u671f\u520a\u4e0a\u4e5f\u6709\u8fd9\u6837\u7684\u8bb0\u8f7d\uff0c\u300c\u7c3f\u8a18\u691c\u5b9a\u306f\u3001\u8ee2\u8077\u306b\u5f79\u7acb\u3064\u8cc7\u683c\u3068\u4e00\u5fdc\u53d6\u3063\u305f\u8cc7\u683c\u306e\u4e8c\u51a0\u3092\u9054\u6210\u3002\u300d\u3002\u6240\u4ee5\u5728\u804c\u4e1a\u89c4\u5212\u4e2d\uff0c\u7c3f\u8a18\u626e\u6f14\u7740\u4e00\u4e2a\u5f88\u91cd\u8981\u7684\u89d2\u8272\u3002\u90a3\u7c3f\u8a18\u8003\u8bd5\u662f\u600e\u6837\u7684\u5f62\u5f0f\uff0c\u96be\u5417\uff1f\r\n\r\n&gt; \u65e5\u672c\u5546\u5de5\u4f1a\u8bae\u6240\u7ec4\u7ec7\u7684\u201c\u65e5\u5546\u7c3f\u8a18\u691c\u5b9a\u201c\u8d44\u683c\u8003\u8bd5\u65f6\u65e5\u672c\u5386\u53f2\u6700\u60a0\u4e45\uff0c\u53c2\u52a0\u4eba\u6570\u6700\u591a\u7684\u7c3f\u8a18\u8003\u8bd5\uff0c\u6709\u5f88\u9ad8\u7684\u58f0\u8a89 \u300c[\u5b98\u7f51](http:\/\/www.kentei.ne.jp\/bookkeeping)\u300d\r\n\r\n### 2. \u5173\u4e8e\u65e5\u5546\u8584\u8bb0\u8003\u8bd5\r\n- \u4e00\u5e74\u7ec4\u7ec73\u6b21\u8003\u8bd5: \u5206\u522b\u662f2\u6708\uff0c6\u6708\u548c11\u6708\u3002\r\n- \u8003\u8bd5\u5206\u4e3a4\u4e2a\u7b49\u7ea7\uff0c1\u7ea7\u6700\u9ad8\u3002 4\u7ea7\u662f\u521d\u7ea7\u5165\u95e8\u8003\u8bd5\u3002\r\n- 3\u7ea7\u8d44\u683c\u8003\u5bdf\u4e2d\u5c0f\u4f01\u4e1a\u8d22\u52a1\u4eba\u5458\u7684\u5fc5\u5907\u77e5\u8bc6\uff1a\u8d22\u52a1\u76f8\u5173\u7684\u8d26\u7c3f\uff0c\u51ed\u8bc1\uff0c\u62a5\u8868\u7684\u7406\u89e3\u548c\u4f7f\u7528\uff0c\u4ee5\u53ca\u901a\u8fc7\u6570\u5b57\u5bf9\u4f01\u4e1a\u7ecf\u8425\u72b6\u51b5\u7684\u4e86\u89e3\u548c\u5206\u6790\u3002\u8981\u6c423\u7ea7\u8d44\u683c\u7684\u4f01\u4e1a\u65e5\u89c1\u589e\u591a\u3002\r\n- \u8003\u8bd5\u65f6\u95f4120\u5206\u949f\uff0c70\u5206\u4ee5\u4e0a\u53ca\u683c\uff0c\u4e00\u822c\u5408\u683c\u7387\u4e3a30%\u3002\r\n\r\n### 3. \u8bb2\u5e08\u7b80\u4ecb\r\n\r\n#### \u6a58\u3000\u9686\u884c\uff08Tachibana Takayuki)\r\n\r\n- 2000\u5e74: \u65e5\u5546\u7c3f\u8a181\u7d1a\u3001\u5168\u7d4c\u7c3f\u8a18\u691c\u5b9a\u4e0a\u7d1a\u5408\u683c\r\n- 2003: \u7a0e\u7406\u58eb\u8a66\u9a13\u5408\u683c\r\n- \u7d4c\u6b74\uff1a\u4f1a\u8a08\u4e8b\u52d9\u6240\u3001\u822a\u7a7a\u4f1a\u793eJAL\u306e\u7d4c\u7406\u90e8\u3092\u7d4c\u3066\u73fe\u5728\u5916\u8cc7\u7cfb\u88fd\u85ac\u4f1a\u793e\u8ca1\u52d9\u7d4c\u7406\u90e8\u306b\u5728\u7c4d\r\n\r\n***\r\n\r\n### 4. \u8bfe\u7a0b\u5b89\u6392\r\n\r\n1. 8\u670801\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u30c6\u30fc\u30de\uff11\uff5e\uff12\r\n2. 8\u670808\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u30c6\u30fc\u30de\uff13\uff5e\uff15\r\n3. 8\u670829\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u30c6\u30fc\u30de\uff16\uff5e\uff18\r\n4. 9\u670812\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u30c6\u30fc\u30de\uff19\uff5e\uff11\uff11\r\n5. 9\u670826\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u30c6\u30fc\u30de\uff11\uff12\uff5e\uff11\uff14\r\n6. 10\u670803\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u30c6\u30fc\u30de\uff11\uff15\uff5e\uff11\uff17\r\n7. 10\u670810\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u30c6\u30fc\u30de\uff11\uff18\uff5e\uff12\uff10\r\n8. 10\u670817\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u30c6\u30fc\u30de\uff12\uff11\uff5e\uff12\uff12\r\n9. 10\u670824\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u904e\u53bb\u554f\u984c\u7df4\u7fd2\u53ca\u8bb2\u89e3\r\n10. 10\u670831\u65e5\uff08\u5468\u516d\uff09: P.M. 17:00 - P.M. 20\uff1a00 \u904e\u53bb\u554f\u984c\u7df4\u7fd2\u53ca\u8bb2\u89e3\r\n\r\n&gt; \u8fd9\u6b21\u7684\u76ee\u6807\u662f: 11\u6708\u4efd\u7684\u8584\u8bb03\u7ea7\u8003\u8bd5\u5168\u5458\u5408\u683c\uff01\r\n\r\n### 5. \u573a\u5730\r\n\r\n&gt; [\u3012101-0024 \u5343\u4ee3\u7530\u533a\u795e\u7530\u548c\u6cc9\u753a1-11-17 \u30d7\u30e9\u30f3\u30c8\u30d3\u30eb\uff12\u968e (\u524d\u4e24\u6b21\u8bfe)](https:\/\/www.google.co.jp\/maps\/place\/%E3%80%92101-0024+%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E7%A5%9E%E7%94%B0%E5%92%8C%E6%B3%89%E7%94%BA%EF%BC%91%E2%88%92%EF%BC%91%EF%BC%91%EF%BC%8D%EF%BC%91%EF%BC%97+%E3%83%97%E3%83%A9%E3%83%B3%E3%83%88%E3%83%93%E3%83%AB\/@35.6995864,139.777878,17.12z\/data=!4m2!3m1!1s0x60188ea8ac83b819:0xf8a88f6fb34db919)\r\n\r\n### 6. \u8bfe\u7a0b\u6536\u8d39\r\n\r\n&gt; 15000\u5186 **(\u517110x3\u5c0f\u65f6)**\r\n\r\n### 7. \u8bfe\u7a0b\u6559\u6750\uff08\u9700\u8981\u81ea\u5df1\u51c6\u5907\uff09\r\n\r\n1.\u300e\u5408\u683c\u30c6\u30ad\u30b9\u30c8 \u65e5\u5546\u7c3f\u8a183\u7d1a Ver.7.0 (\u3088\u304f\u308f\u304b\u308b\u7c3f\u8a18\u30b7\u30ea\u30fc\u30ba) \u300f\r\n\r\n[![boki-title](http:\/\/qilian.jp\/appointment\/img\/original\/20150801-course-boki_1.jpg)](http:\/\/www.amazon.co.jp\/%E5%90%88%E6%A0%BC%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88-%E6%97%A5%E5%95%86%E7%B0%BF%E8%A8%983%E7%B4%9A-Ver-7-0-%E3%82%88%E3%81%8F%E3%82%8F%E3%81%8B%E3%82%8B%E7%B0%BF%E8%A8%98%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-TAC%E7%B0%BF%E8%A8%98%E6%A4%9C%E5%AE%9A%E8%AC%9B%E5%BA%A7\/dp\/4813256589)\r\n\r\n\r\n\r\n2.\u300e\u5408\u683c\uff84\uff9a\uff70\uff86\uff9d\uff78\uff9e \u65e5\u5546\u7c3f\u8a183\u7d1a Ver.7.0 (\u3088\u304f\u308f\u304b\u308b\u7c3f\u8a18\uff7c\uff98\uff70\uff7d\uff9e\u300f\r\n\r\n[![boki-title](http:\/\/qilian.jp\/appointment\/img\/original\/20150801-course-boki_1.jpg)](http:\/\/www.amazon.co.jp\/%E5%90%88%E6%A0%BC%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0-%E6%97%A5%E5%95%86%E7%B0%BF%E8%A8%983%E7%B4%9A-Ver-7-0-%E3%82%88%E3%81%8F%E3%82%8F%E3%81%8B%E3%82%8B%E7%B0%BF%E8%A8%98%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-TAC%E7%B0%BF%E8%A8%98%E6%A4%9C%E5%AE%9A%E8%AC%9B%E5%BA%A7\/dp\/4813256619)\r\n\r\n3.\u300e\u5408\u683c\u3059\u308b\u305f\u3081\u306e\u904e\u53bb\u554f\u984c\u96c6 \u65e5\u5546\u7c3f\u8a183\u7d1a '15\u5e7411\u6708\u691c\u5b9a\u5bfe\u7b56 (\u3088\u304f\u308f\u304b\u308b\u7c3f\u8a18\u30b7\u30ea\u30fc\u30ba) \u300f\r\n\r\n[![boki-title](http:\/\/qilian.jp\/appointment\/img\/original\/20150801-course-boki_3.jpg)](http:\/\/www.amazon.co.jp\/%E5%90%88%E6%A0%BC%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E9%81%8E%E5%8E%BB%E5%95%8F%E9%A1%8C%E9%9B%86-%E6%97%A5%E5%95%86%E7%B0%BF%E8%A8%983%E7%B4%9A-15%E5%B9%B411%E6%9C%88%E6%A4%9C%E5%AE%9A%E5%AF%BE%E7%AD%96-%E3%82%88%E3%81%8F%E3%82%8F%E3%81%8B%E3%82%8B%E7%B0%BF%E8%A8%98%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-TAC%E7%B0%BF%E8%A8%98%E6%A4%9C%E5%AE%9A%E8%AC%9B%E5%BA%A7\/dp\/4813262678)\r\n\r\n### 7. \u5176\u4ed6\u9700\u8981\u51c6\u5907\u7684\u4e1c\u897f\r\n\r\n- \u96fb\u5353\u3001\u7b46\u8a18\u7528\u5177\r\n\t- \u96fb\u5353\u306f\u3001\u8a08\u7b97\u6a5f\u80fd(\u56db\u5247\u6f14\u7b97)\u306e\u307f\u306e\u3082\u306e\u306b\u9650\u308a\u307e\u3059\u3002\r\n\t- \u643a\u5e2f\u96fb\u8a71\u3084\u5370\u5237\u6a5f\u80fd\u30fb\u97f3\u306e\u51fa\u308b\u6a5f\u80fd\u30fb\u30d7\u30ed\u30b0\u30e9\u30e0\u6a5f\u80fd\uff08\u4f8b\uff1a\u95a2\u6570\u96fb\u5353\u7b49\uff09\u30fb\u8f9e\u66f8\u6a5f\u80fd\u306a\u3069\u306e\u3042\u308b\u96fb\u5353\u306f\u4f7f\u3048\u307e\u305b\u3093)\r\n\r\n### 8. \u62a5\u540d\u94fe\u63a5:\r\n\r\n&gt; [\u70b9\u6211\u8df3\u8f6c\u62a5\u540d](http:\/\/goo.gl\/forms\/VsKNm6vxnZ)\r\n\r\n\r\n--- \r\n\r\n\u5982\u679c\u5bf9\u4e8e\u8bfe\u7a0b\u6709\u4efb\u4f55\u7684\u7591\u95ee\u7684\u8bdd\uff0c\u6b22\u8fce\u5728\u4e0b\u65b9\u7ed9\u6211\u4eec\u7559\u8a00\uff0c\u6211\u4eec\u4f1a\u5728\u7b2c\u4e00\u65f6\u95f4\u7ed9\u4e88\u56de\u590d\u3002"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u4e03\u8054\u5c31\u804c"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/qilian.jp\/appointment\/img\/original\/news-thumbnail-shoki96cfbc4e2cfafe17f042b0f2cbdb560e.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"page_views"</span><span class="p">:</span><span class="w"> </span><span class="s2">"109"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"page_likes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-01 18:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-23 07:18:59"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"PostsCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"552"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"post_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"165"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"553"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"post_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"165"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>获取指定ID的资讯信息</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://qilian.jp/appointment/api/news_detail.json?id=&lt;ID&gt;</code></p>
+
+<h3 id="results-parameters">Results Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>资讯ID</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+</tr>
+<tr>
+<td>descriptioin</td>
+<td>概要简介</td>
+</tr>
+<tr>
+<td>content</td>
+<td>资讯文章内容</td>
+</tr>
+<tr>
+<td>image</td>
+<td>图像</td>
+</tr>
+<tr>
+<td>page_views</td>
+<td>阅读数</td>
+</tr>
+<tr>
+<td>page_likes</td>
+<td>喜爱数（开发中）</td>
+</tr>
+<tr>
+<td>created</td>
+<td>发布时间</td>
+</tr>
+<tr>
+<td>&mdash;&mdash;&mdash;</td>
+<td>&mdash;&mdash;&mdash;&ndash;</td>
+</tr>
+<tr>
+<td>category_id</td>
+<td>该资讯所属分类(可多个)</td>
+</tr>
+</tbody></table>
+
+<h2 id="资讯分类一览">资讯分类一览</h2>
+
+<blockquote>
+<p>参数 category_id必须, page可选 </p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/news_category.json?category_id=5&amp;page=6"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currentPageSum"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"140"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u3010\u8089\u5305\u4e13\u680f\u3011\u7b2c\u4e09\u671f \u539f\u6cb9\u4ef7\u683c\u7684\u5f71\u54cd"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u5728\u539f\u6cb9\u4ef7\u683c\u4e0d\u7a33\u5b9a\u7684\u5927\u80cc\u666f\u4e0b\uff0c\u6628\u5929\u4fc4\u7f57\u65af\u4e2d\u592e\u94f6\u884c\u5927\u5e45\u4e0a\u8c03\u5229\u7387\u4e4b\u540e\uff0c\u5362\u5e03\u4ece\u4e0a\u8c03\u524d\u76841\u7f8e\u514367\u5362\u5e03\u4e00\u4e0b\u5b50\u8d2c\u503c\u5230\u4e86\u4e0a\u8c03\u540e\u76841\u7f8e\u514378\u5362\u5e03\u3002"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u524d\u51e0\u5929\u6709\u4f4d\u540c\u5b66\u95ee\u6211\u8bf4\uff0c\u8089\u5305\u8001\u5e08\u4e0b\u6b21\u80fd\u8bb2\u4e0b\u539f\u6cb9\u4ef7\u683c\uff0c\u65e5\u5143\u6c47\u7387\uff0c\u548c\u65e5\u7ecf\u80a1\u5e02\u7684\u5173\u7cfb\u5417? \u679c\u4e0d\u5176\u7136\uff0c\u4eca\u5929\u7684\u65e5\u7ecf\u7684\u5934\u7248\u5934\u6761\u5c31\u51fa\u73b0\u4e86\u8fd9\u4e2a\u8bdd\u9898\u3002\r\n\r\n&gt; \u5728\u539f\u6cb9\u4ef7\u683c\u4e0d\u7a33\u5b9a\u7684\u5927\u80cc\u666f\u4e0b\uff0c\u6628\u5929\u4fc4\u7f57\u65af\u4e2d\u592e\u94f6\u884c\u5927\u5e45\u4e0a\u8c03\u5229\u7387\u4e4b\u540e\uff0c\u5362\u5e03\u4ece\u4e0a\u8c03\u524d\u76841\u7f8e\u514367\u5362\u5e03\u4e00\u4e0b\u5b50\u8d2c\u503c\u5230\u4e86\u4e0a\u8c03\u540e\u76841\u7f8e\u514378\u5362\u5e03\u3002\r\n\r\n\u4e0d\u5149\u662f\u4fc4\u7f57\u65af\uff0c\u65e5\u672c\u7ecf\u6d4e\u4e5f\u6df1\u53d7\u8fd9\u79cd\u53d8\u5316\u7684\u4f24\u5bb3\u3002\u65e5\u7ecf\u80a1\u5e02\u4e0b\u843d344\u70b9\uff0c\u65e5\u5143\u4e5f\u5728\u4e00\u65f6\u5347\u503c\u5230\u4e861\u7f8e\u5143115\u65e5\u5143\u3002\u8fd9\u79cd\u6781\u5176\u6fc0\u70c8\u7684\u5e02\u573a\u53d8\u52a8\u5bf9\u4e8e\u4e16\u754c\u7ecf\u6d4e\u7684\u5f71\u54cd\u662f\u6781\u5176\u6076\u52a3\u7684\u3002\r\n\r\n\u5f52\u6839\u7ed3\u5e95\u539f\u6cb9\u4ef7\u683c\u7684\u6025\u901f\u6ed1\u843d\u662f\u5bfc\u81f4\u91d1\u878d\u5e02\u573a\u4e0d\u7a33\u5b9a\u7684\u91cd\u8981\u56e0\u7d20\u4e4b\u4e00\uff0c\u5176\u5bfc\u81f4\u7684\u4e0d\u4ec5\u4ec5\u662f\u4ea7\u6cb9\u56fd\u4fc4\u7f57\u65af\u7684\u8d27\u5e01\u8d2c\u503c\uff0c\u4e5f\u9020\u6210\u4e86\u4e16\u754c\u4e0a\u4e0e\u80fd\u6e90\u76f8\u5173\u7684\u516c\u53f8\u7684\u80a1\u7968\uff0c\u503a\u5238\u7684\u4f4e\u843d\u3002\r\n\r\n\u6240\u4ee5\u5404\u56fd\u80a1\u5e02\u4e00\u65f6\u7684\u4f4e\u8ff7\u65f6\u610f\u6599\u4e4b\u4e2d\u7684\u3002\u7136\u540e\u4e3a\u4ec0\u4e48\u65e5\u5143\u4f1a\u5347\u503c\u662f\u56e0\u4e3a\u65e5\u5143\u4e00\u76f4\u88ab\u770b\u4f5c\u6210\u4e00\u4e2a\u5b89\u5168\u8d44\u4ea7\u3002\u5f53\u9ad8\u98ce\u9669\u7684\u91d1\u878d\u4ea7\u54c1\u88ab\u9884\u6d4b\u8d70\u4f4e\u7684\u65f6\u5019\uff0c\u5927\u91cf\u7684\u8d44\u91d1\u4f1a\u53bb\u8dd1\u5230\u65e5\u5143\u91cc\u9762\u53bb\u907f\u98ce\uff0c\u4ece\u800c\u5bfc\u81f4\u4e86\u65e5\u5143\u7684\u5347\u503c\u3002\u4e0d\u4ec5\u662f\u65e5\u5143\u5176\u4ed6\u53d1\u8fbe\u56fd\u5bb6\u7684\u56fd\u503a\u4e5f\u662f\u5982\u6b64\u3002\r\n\r\n\u51e1\u662f\u90fd\u6709\u4e24\u9762\u6027\uff0c\u867d\u7136\u8fd9\u6b21\u7684\u539f\u6cb9\u4ef7\u683c\u5bf9\u4e16\u754c\u7ecf\u6d4e\u4ea7\u751f\u4e86\u5de8\u5927\u7684\u4e0d\u597d\u7684\u5f71\u54cd\uff0c\u4f46\u662f\u5bf9\u4e8e\u4ee5\u8fdb\u53e3\u8d44\u6e90\u4e3a\u4e3b\u7684\u4e9a\u6d32\u56fd\u5bb6\u6765\u8bf4\u8fd9\u662f\u4e00\u4e2a\u5de8\u5927\u7684\u798f\u97f3\u3002\u7279\u522b\u662f\u4e2d\u56fd\uff0c\u97e9\u56fd\u8fd9\u4e9b\u5730\u65b9\u7684\u4f01\u4e1a\u6765\u8bf4\uff0c\u539f\u6cb9\u4ef7\u683c\u7684\u964d\u4f4e\u6240\u5e26\u6765\u7684\u662f\u539f\u6750\u6599\u8d39\u7684\u964d\u4f4e\uff0c\u90a3\u4e48\u5bf9\u8fd9\u4e9b\u4f01\u4e1a\u800c\u8a00\u5229\u6da6\u4e5f\u4f1a\u5927\u5927\u4e0a\u5347\u4e86\u3002\u800c\u8fd9\u4e9b\u56fd\u5bb6\u7684\u666e\u901a\u8001\u767e\u59d3\u7684\u751f\u6d3b\u6210\u672c\u4e5f\u4f1a\u964d\u4f4e\u3002\r\n\r\n\u5176\u5b9e\u5728\u6211\u770b\u6765\uff0c\u672c\u6b21\u7684\u4fc4\u7f57\u65af\u5371\u673a\u5176\u5b9e\u5c31\u662f\u4e00\u4e2a\u653f\u6cbb\u6240\u5bfc\u81f4\u7684\u7ed3\u679c\u3002\r\n\r\n\u56e0\u4e3a\u897f\u65b9\u56fd\u5bb6\u5bf9\u4e8e\u4fc4\u7f57\u65af\u7684\u5236\u88c1\uff0c\u4ece\u800c\u5bf9\u4e16\u754c\u7ecf\u6d4e\u9020\u6210\u4e86\u4e00\u7cfb\u5217\u7684\u5f71\u54cd\u3002\u6628\u5929\u5237\u5fae\u4fe1\u7684\u65f6\u5019\u8fd8\u770b\u5230\u4e86\u4e00\u5219\u6211\u524d\u8f88\u6240\u53d1\u7684\u4e00\u7bc7\u6587\u7ae0\uff0c\u8bf4\u4ee5\u540e\u98ce\u9669\u7ba1\u7406\u8981\u52a0\u4e00\u6761\u56fd\u5bb6\u800d\u6d41\u6c13\u98ce\u9669\u3002\u56e0\u4e3a\u83ab\u65af\u79d1\u5916\u6c47\u4ea4\u6613\u4e2d\u5fc3\u7a81\u7136\u5ba3\u5e03\u5f53\u65e5\u7f8e\u5143\u5151\u5362\u5e03\u5373\u671f\u62a5\u4ef7\u8d85\u8fc764.45\u7684\u6210\u4ea4\u5168\u90e8\u4f5c\u5e9f\u3002\u5728\u56fd\u5bb6\u529b\u91cf\u9762\u524d\uff0c\u6295\u8d44\u8005\u7684\u529b\u91cf\u662f\u591a\u4e48\u7684\u6e3a\u5c0f\u554a!\r\n\r\n\u5bf9\u4e8e\u6b63\u5728\u51c6\u5907\u5c31\u804c\u540c\u5b66\u6765\u8bf4\uff0c\u7279\u522b\u662f\u5bf9\u4e8e\u80fd\u6e90\u516c\u53f8\u6216\u8005\u91d1\u878d\u516c\u53f8\u6709\u7740\u5f3a\u70c8\u5174\u8da3\u7684\u540c\u5b66\uff0c\u5fc5\u987b\u5bf9\u4eca\u5929\u7684\u65e5\u7ecf\u65b0\u95fb\u683c\u5916\u5173\u6ce8\u3002\r\n\r\n&gt; \u56e0\u4e3a\u4f60\u5728\u9006\u63d0\u95ee\u5f53\u4e2d\u53ef\u4ee5\u8fd0\u7528\u4eca\u5929\u8fd9\u5219\u5927\u6d88\u606f\u6765\u663e\u793a\u51fa\u4f60\u5bf9\u65f6\u4e8b\u662f\u591a\u4e48\u7684follow\uff0c\u4e5f\u53ef\u4ee5\u901a\u8fc7\u8fd9\u4e9b\u95ee\u9898\u80fd\u591f\u5f97\u5230\u4e13\u4e1a\u4eba\u58eb\u7684\u89e3\u7b54\u548c\u5bf9\u516c\u53f8\u672a\u6765\u7684\u7ecf\u8425\u6218\u7565\u7684\u7406\u89e3\u3002\r\n\r\n## \u5176\u4ed6\u65b0\u95fb\r\n1. \u636eJetro\u7684\u8c03\u67e5\u5c06\u5728\u672a\u6765\u589e\u5927\u4e2d\u56fd\u5e02\u573a\u6295\u5165\u7684\u65e5\u672c\u4f01\u4e1a\u4e3a\u6240\u6709\u56de\u7b54\u4f01\u4e1a\u768446.5%\uff0c\u540c\u6bd4\u4e0b\u964d7.7%\uff0c\u6709\u53f2\u4ee5\u6765\u7b2c\u4e00\u6b21\u4f4e\u4e8e50%,\r\n2. [\u4e30\u7530](http:\/\/www.toyota.co.jp\/)\u51fa\u8d44\u519c\u4e1a\u4f01\u4e1a\r\n3. [\u82f1\u83f2\u5c3c\u8fea](http:\/\/www.nissan-corp.co.jp\/)\u5728\u534e4s\u5e97\u5c06\u57282018\u5e74\u5e95\u4ece\u539f\u6709\u768480\u5bb6\u589e\u957f\u5230200\u5bb6\uff0c\u7b49\u7b49\u3002\r\n\r\n&gt; P.S.\u5176\u5b9e\u6700\u8fd1\u65e5\u5143\u7684\u8d70\u52bf\u8ba9\u6211\u8fd9\u4e2a\u5c0f\u6c11\u4f17\u975e\u5e38\u4e0d\u5b89\uff0c\u4e00\u4f1a\u513f\u51b2\u5230\u4e86120\uff0c\u4e00\u4f1a\u513f\u53c8\u964d\u5230115\u3002\u771f\u662f\u5e0c\u671b\u5728\u5de5\u4f5c\u524d\u65e5\u5143\u4fbf\u5b9c\u70b9\uff0c\u5de5\u4f5c\u540e\u65e5\u5143\u8d35\u70b9\u3002\r\n"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u4e03\u8054\u5c31\u804c"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/qilian.jp\/appointment\/img\/original\/b98731cef1c44e7b0f91a639f4dc25d0.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"page_views"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"page_likes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-12-16 18:00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-23 08:22:47"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"PostsCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"post_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"140"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"137"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u3010\u8089\u5305\u4e13\u680f\u3011\u7b2c\u516d\u671f JX\u9884\u8ba12020\u5e74\u63d0\u4f9b\u6c34\u7d20\u4f9b\u5e94\u7ad9"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u65b0\u7684\u4e00\u5468\uff0c\u65b0\u7684\u5fc3\u60c5\uff0c\u6b22\u8fce\u6765\u5230\u8089\u5305\u4e13\u680f\u3002\u672c\u671f\u8089\u5305\u4e13\u680f\u6240\u8981\u4ecb\u7ecd\u7684\u65e5\u7ecf\u5934\u7248\u5934\u6761\u65b0\u95fb\u4e3a\uff0cJX\u5c06\u57282020\u5e74\u8fd0\u7528\u5176\u4f4e\u8d39\u7528\u7684\u624b\u6bb5\uff0c\u63d0\u4f9b\u5168\u56fd\u7ea62000\u4e2a\u6c34\u7d20\u4f9b\u5e94"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt; \u65b0\u7684\u4e00\u5468\uff0c\u65b0\u7684\u5fc3\u60c5\uff0c\u6b22\u8fce\u6765\u5230\u8089\u5305\u4e13\u680f\u3002\u672c\u671f\u8089\u5305\u4e13\u680f\u6240\u8981\u4ecb\u7ecd\u7684\u65e5\u7ecf\u5934\u7248\u5934\u6761\u65b0\u95fb\u4e3a\uff0cJX\u5c06\u57282020\u5e74\u8fd0\u7528\u5176\u4f4e\u8d39\u7528\u7684\u624b\u6bb5\uff0c\u63d0\u4f9b\u5168\u56fd\u7ea62000\u4e2a\u6c34\u7d20\u4f9b\u5e94\u7ad9\u3002\r\n\r\n&gt; \u6709\u5f88\u591a\u6b63\u5728\u51c6\u5907\u627e\u5de5\u4f5c\u7684\u540c\u5b66\u4e5f\u8bb8\u5bf92\u4e2a\u5355\u8bcd\u6709\u4e9b\u964c\u751f\uff0c\u4e00\u4e2a\u662fJX\uff0c\u53e6\u4e00\u4e2a\u662f\u6c34\u7d20\u3002\u4eca\u5929\u8089\u5305\u5c31\u7740\u91cd\u82b1\u65f6\u95f4\u4ecb\u7ecd\u8fd9\u4e24\u4e2a\u4e1c\u897f\u3002\r\n\r\n## JX\r\n\r\nJX\u5168\u540d\u4e3a[JX\u65e5\u9271\u65e5\u77f3\u30a8\u30cd\u30eb\u30ae\u30fc](http:\/\/www.noe.jx-group.co.jp\/) **\u540c\u5b66\u4eec\u53ef\u4ee5\u628a\u8fd9\u4e2a\u516c\u53f8\u770b\u6210\u65e5\u672c\u7684\u4e2d\u77f3\u5316\u6216\u8005\u4e2d\u77f3\u6cb9\uff0c\u662f\u65e5\u672c\u6700\u5927\u7684\u7efc\u5408\u80fd\u6e90\u516c\u53f8\u3002**\r\n\r\n\u4e3a\u4ec0\u4e48\u8bf4\u5b83\u662f\u4e00\u5bb6\u7efc\u5408\u80fd\u6e90\u516c\u53f8\u5462\uff1f\u539f\u56e0\u5f88\u7b80\u5355\uff0c\u8fd9\u4e2a\u516c\u53f8\u4e0d\u4ec5\u5360\u4e86\u6574\u4e2a\u65e5\u672c\u6c7d\u6cb9\u5e02\u573a\u768430%\u4ee5\u4e0a\u7684\u4efd\u989d\uff0c\u8fd8\u6b63\u5728\u52aa\u529b\u7684\u53d1\u5c55\u5176\u4ed6\u79cd\u7c7b\u80fd\u6e90\u4e1a\u52a1\uff0c\u4f8b\u5982\u7535\u529b\uff0c\u592a\u9633\u80fd\u7b49\u7b49\u3002\r\n\r\n\u6240\u4ee5\u8bf4\uff0c\u8fd9\u4e2a\u516c\u53f8\u662f\u975e\u5e38\u5389\u5bb3\u7684\u3002\u76f8\u4fe1\u4e0a\u8fc7\u8089\u5305\u7684\u8bfe\u7684\u540c\u5b66\u77e5\u9053\uff0c\u8089\u5305\u4e5f\u66fe\u7ecf\u62a5\u8fc7\u8fd9\u4e2a\u516c\u53f8\uff0c\u6700\u540e\u653e\u5f03\u4e86\u53bb\u8fd9\u5bb6\u516c\u53f8\u7684\u673a\u4f1a\u3002\u867d\u7136\u653e\u5f03\u4e86\uff0c\u4f46\u662f\u8fd8\u662f\u5bf9\u4e8e\u8fd9\u5bb6\u4f01\u4e1a\u6709\u975e\u5e38\u5927\u7684\u597d\u611f\u3002\r\n\r\n&gt; **1. \u8fd9\u5bb6\u4f01\u4e1a\u63e1\u6709\u8fd9\u65e5\u672c\u7684\u80fd\u6e90\u547d\u8109\uff0c\u5bf9\u4e8e\u6574\u4e2a\u4eba\u7684\u53d1\u5c55\u6765\u8bf4\uff0c\u8fd9\u5bb6\u516c\u53f8\u662f\u975e\u5e38\u591a\u7684\u673a\u4f1a\u7ed9\u5927\u5bb6\u7684\u3002**\r\n\r\n\u6bd5\u7adf\u8d77\u70b9\u9ad8\u4e86\uff0c\u6709\u89c1\u591a\u8bc6\u5e7f\u7684\u611f\u89c9\u3002\r\n\r\n&gt; **2. \u8fd9\u5bb6\u4f01\u4e1a\u505a\u7684\u4e8b\u60c5\u90fd\u662f\u5927\u5584\u4e8b**\r\n\r\n\u867d\u7136\u80fd\u6e90\u8fd9\u79cd\u751f\u610f\u770b\u8d77\u6765\u5f88\u9ed1\u6697\uff0c\u4f46\u5176\u5b9e\u5bf9\u4e8e\u65e5\u672c\u8fd9\u79cd\u6ca1\u6709\u8d44\u6e90\u7684\u56fd\u5bb6\u6765\u8bf4\uff0c\u5176\u4e8b\u4e1a\u7684\u53d1\u5c55\u5bf9\u4e8e\u6574\u4e2a\u56fd\u5bb6\u662f\u5177\u6709\u91cd\u8981\u7684\u4f5c\u7528\u3002\u975e\u5e38\u6709\u6210\u5c31\u611f\u7684\u5de5\u4f5c\u3002\r\n\r\n&gt; **3. \u8fd9\u4e2a\u516c\u53f8\u6ca1\u6709\u5bf9\u5b66\u6821\u7684\u9650\u5236**\r\n\r\n\u6709\u4e9b\u540c\u5b66\u89c9\u5f97\u81ea\u8eab\u7684\u5b66\u6821\u53ef\u80fd\u6ca1\u6709\u90a3\u4e48\u7684\u597d\uff0c\u5176\u5b9e\u8fd9\u4e2a\u662f\u4e0d\u8981\u7d27\u7684\uff0c\u8fd9\u4e2a\u516c\u53f8\u5bf9\u4e8e\u5b66\u6821\u7684\u9650\u5236\u6ca1\u6709\u5f88\u9ad8\u3002\u53c8\u56e0\u4e3a\u6bcf\u5e74\u90fd\u4f1a\u62db\u6536\u56fa\u5b9a\u4eba\u6570\u7684\u4e2d\u56fd\u4eba\u3002\u6240\u4ee5\u5927\u5bb6\u53ef\u4ee5\u8bd5\u7740\u53bb\u62a5\u4e00\u4e0b\u3002\r\n\r\n## \u6c34\u7d20\r\n\r\n&gt; **\u6c34\u7d20\u5176\u5b9e\u662f\u4e00\u79cd\u65b0\u80fd\u6e90\u3002\u5b83\u7684\u7279\u5f81\u662f\u975e\u5e38\u8f7b\uff0c\u5bb9\u6613\u7206\u70b8\u71c3\u70e7\uff0c\u7136\u540e\u662f\u5b87\u5b99\u4e2d\u6570\u91cf\u6700\u591a\u7684\u4e00\u79cd\u5143\u7d20\u3002\u5728\u5730\u7403\u4e0a\uff0c\u6c34\u7d20\u662f\u6c34\u548c\u6709\u673a\u5316\u5408\u7269\u7684\u91cd\u8981\u7ec4\u6210\u90e8\u5206\u4e4b\u4e00\u3002\u5176\u6700\u5927\u7684\u7528\u5904\u5c31\u662f\u4f5c\u4e3a\u4e00\u79cd\u71c3\u6599\u7535\u6c60\u88ab\u5927\u5bb6\u4f7f\u7528**\r\n\r\n\u5982\u679c\u4ece\u7b2c\u4e00\u671f\u5c31\u5173\u6ce8\u8089\u5305\u4e13\u680f\u7684\u670b\u53cb\u80af\u5b9a\u77e5\u9053\u4e30\u7530\u5728\u8fd9\u4e2a\u6708\u768415\u53f7\u53d1\u5e03\u4e86\u4e00\u8f86\u65b0\u8f66\uff0c\u540d\u4e3aMIRAI\uff08\u672a\u6765\uff09\u3002\u8fd9\u8f86\u8f66\u5c31\u662f\u4ee5\u6c34\u7d20\u4e3a\u71c3\u6599\u52a8\u529b\u6765\u6e90\u3002\u4f46\u662f\u6c34\u7d20\u71c3\u6599\u6c7d\u8f66\u867d\u7136\u6709\u5f88\u597d\u7684\u4f18\u70b9\uff0c\u4f8b\u5982\u73af\u4fdd\uff0c\u80fd\u6e90\u5229\u7528\u6548\u7387\u9ad8\u3002\u4f46\u4e5f\u6709\u4e00\u4e9b\u7f3a\u70b9\u5236\u7ea6\u7740\u5b83\u7684\u53d1\u5c55\u3002\r\n\r\n&gt; **1.\u5982\u4f55\u63a7\u5236\u6c34\u7d20\u7684\u5b89\u5168\u3002\u6c34\u7d20\u7684\u7279\u70b9\u5c31\u662f\u5bb9\u6613\u7206\u70b8**\r\n\r\n\u5982\u4f55\u63a7\u5236\u597d\u6c34\u7d20\u7684\u5b89\u5168\u6027\u80fd\u4e0d\u4ec5\u5bf9\u4e8e\u6c7d\u8f66\u5546\u7684\u751f\u4ea7\u8fc7\u7a0b\u662f\u4e00\u4e2a\u4e25\u8083\u7684\u8bfe\u9898\uff0c\u4e5f\u5bf9\u4e8e\u6c34\u7d20\u4f9b\u5e94\u7ad9\u7684\u50a8\u85cf\u6280\u672f\u662f\u4e00\u4e2a\u4e25\u8083\u7684\u95ee\u9898\u3002\r\n\r\n&gt; **2. \u6c34\u7d20\u975e\u5e38\u7684\r\n\r\n\u8fd9\u4e2a\u8d35\u4e0d\u4ec5\u4ec5\u662f\u4f53\u73b0\u5728\u6c34\u7d20\u7684\u5236\u9020\u4ee5\u53ca\u8fd0\u9001\u7684\u8d39\u7528\u4e4b\u4e0a\uff0c\u4e5f\u4f53\u73b0\u5728\u4f9b\u5e94\u7ad9\u7684\u5efa\u8bbe\u8d39\u5f53\u4e2d\u3002\u6240\u4ee5\u8fd9\u4e2a\u9ad8\u8d39\u7528\u4e5f\u886c\u6258\u51fa\u6c34\u7d20\u4ef7\u683c\u4e0a\u7684\u6602\u8d35\u3002\u6bd4\u59821\u516c\u65a4\u7684\u6c34\u7d20\u5927\u7ea6\u4e3a1100\u65e5\u5143\uff0c\u8fd9\u4e2a\u4ef7\u683c\u8ddf\u8c6a\u534e\u623f\u8f66\u7684\u6df7\u5408\u52a8\u529b\u6240\u9700\u7684\u71c3\u6599\u8d39\u662f\u4e00\u6837\u7684\u3002\r\n\r\n&gt; \u800c\u4eca\u5929\u8fd9\u5219\u65b0\u95fb\u4e0d\u4ec5\u8bf4\u4e86JX\u8981\u57282020\u5e74\u63a8\u51fa2000\u5bb6\u6c34\u7d20\u4f9b\u5e94\u7ad9\uff0c\u4e5f\u8be6\u7ec6\u89e3\u8bf4\u4e86\u5b83\u5982\u4f55\u964d\u4f4e\u5728\u6c34\u7d20\u4f9b\u5e94\u7ad9\u4e0a\u6240\u9700\u7684\u8d39\u7528\u3002\r\n\r\n\u4f8b\u5982\u9ad8\u5ea6\u538b\u7f29\u6c34\u7d20\uff0c\u4ece\u800c\u964d\u4f4e\u8fd0\u9001\u6240\u9700\u8d39\u7528\u3002\u8fd8\u6709\u6bd4\u5982\u5229\u7528\u4e00\u79cd\u7279\u6b8a\u819c\u5728\u5206\u89e3\u6c34\u7d20\u7684\u8fc7\u7a0b\u5f53\u4e2d\uff0c\u63d0\u9ad8\u4e86\u6c34\u7d20\u7684\u56de\u6536\u7387\u3002\u8fd9\u4e9b\u90fd\u662f\u901a\u8fc7\u6280\u672f\u4e0a\u7684\u66f4\u65b0\uff0c\u964d\u4f4e\u4e86\u57fa\u7840\u8d39\u7528\uff0c\u4f7f\u5f97\u6c34\u7d20\u71c3\u6599\u6c7d\u8f66\u80fd\u591f\u5728\u65e5\u672c\u666e\u53ca\u8d77\u6765\u3002\u5f53\u7136\u5176\u76ee\u7684\u4e0d\u4ec5\u4ec5\u662f\u5728\u65e5\u672c\uff0c\u5728\u672a\u6765\u7684\u4e16\u754c\u5404\u5730\u90fd\u80fd\u4f7f\u7528\u4e0a\u8fd9\u79cd\u6280\u672f\u3002\u800c\u8bf4\u5b9e\u8bdd\uff0c\u8fd9\u4e2a\u5468\u672b\u6709\u4e00\u5219\u91cd\u5927\u65b0\u95fb\uff0c\u65e5\u672c\u77f3\u6cb9\u5e02\u573a\u4e0a\u6392\u540d\u7b2c2\u7684\u51fa\u5149\u5174\u4ea7\uff0c\u8981\u5c06\u6392\u540d\u7b2c5\u7684\u662d\u548c\u58f3\u724c\u7ed9\u4e70\u4e86\u3002\u8fd9\u4e00\u4e0b\u5c31\u628aJX\u903c\u4e0a\u6881\u5c71\u7684\u611f\u89c9\uff0c\u5176\u5e02\u573a\u9738\u4e3b\u7684\u5730\u4f4d\u5c06\u53d7\u5230\u5f88\u5927\u7684\u51b2\u51fb\u3002\u65e5\u672c\u7684\u80fd\u6e90\u5e02\u573a\u6162\u6162\u53d8\u5f97\u6709\u8da3\u8d77\u6765\u4e86\u3002\r\n\r\n## \u5176\u4ed6\u65b0\u95fb\r\n\r\n1. \u65e5\u672c\u5404\u5927\u4f01\u4e1a\u7684\u51ac\u5b63\u5956\u91d1\u5e73\u5747\u589e\u52a0\u4e865.5%\r\n2. \u5e1d\u4eac\u5e73\u6210\u5927\u5b66\u7684\u6559\u6388\u5bf9\u4e8e\u539f\u6cb9\u4ef7\u683c\u7684\u4f4e\u843d\u7684\u5206\u6790\r\n3. \u65e5\u672c\u5c06\u8bbe\u7acb\u72ec\u81ea\u7684\u5b87\u5b99\u536b\u661f\u4f53\u5236\r\n4. \u751f\u547d\u4fdd\u9669\u7684\u4eba\u6c14\u91d1\u878d\u5546\u54c1\u7684\u4ece\u6b7b\u4ea1\u4fdd\u969c\u5230\u5e74\u91d1\u533b\u7597\r\n\r\n&gt; \u4eca\u5929\u8fd8\u6709\u4ef6\u5927\u4e8b\uff0c\u5c31\u662f\u4e03\u8054\u7684\u8001\u5927\u7ec8\u4e8e\u6bd5\u4e1a\u4e86\u3002\u606d\u559c\u4ed6\u6709\u5e78\u6210\u4e3a\u4e86\u65b0\u5174\u4eba\u79cd: \u535a\u58eb\uff01\r\n"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u4e03\u8054\u5c31\u804c"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/qilian.jp\/appointment\/img\/original\/b98731cef1c44e7b0f91a639f4dc25d0.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"page_views"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"page_likes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-12-16 18:00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-23 03:34:03"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"PostsCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"492"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"post_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"137"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"493"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"post_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"137"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>获取指定分类下的所有资讯(分页，每页显示10条)</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://qilian.jp/appointment/api/news_category.json?category_id=&lt;CATEGORY_ID&gt;&amp;page=&lt;PAGE_ID&gt;</code></p>
+
+<h3 id="results-parameters">Results Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category_id</td>
+<td>当前分类</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>当前分类所有文章总数</td>
+</tr>
+<tr>
+<td>pageCount</td>
+<td>当前分类总页数(每页显示10条)</td>
+</tr>
+<tr>
+<td>currentPage</td>
+<td>当前所在页</td>
+</tr>
+<tr>
+<td>currentPageSum</td>
+<td>当前页面共有资讯数量</td>
+</tr>
+</tbody></table>
+
+<h2 id="资讯搜索-所有资讯一览">资讯搜索/所有资讯一览</h2>
+
+<blockquote>
+<p>参数 q搜索关键字(q为空时返回所有资讯), page可选 </p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"http://qilian.jp/appointment/api/news_search.json?q=ES&amp;page=2"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currentPageSum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u3010OBOG\u5728\u7ebf\u8bbf\u8c08\u3011\uff1a\u4e50\u5929\u5f00\u53d1\u804c"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"### \u7b80\u4ecb\r\n\r\n- \u7535\u5668\u901a\u4fe1\u5927\u5b66\uff0c\u535a\u58eb\r\n- \u4e50\u5929DU(= Developing Unit)\r\n\r\n--- \r\n\r\n**Q:** \u8bf4\u660e\u4f1a\u6ca1\u53bb\u6210\u4f1a\u6709\u5f71\u54cd\u5417?\r\n \r\n**A:** \u6ca1\u6709\u53c2\u52a0, \u5f53\u65f6\u5728\u53f0\u6e7e\u8de8\u5e74,\u770b\u5b8c101\u82b1\u706b,\u76f4\u63a5\u7f51\u7ad9\u7533\u8bf7\r\n \r\n**Q:** \u4e00\u822c\u7fa4\u9762\u4f1a\u95ee\u4ec0\u4e48\u95ee\u9898,\u91cd\u70b9\u8003\u5bdf\u4ec0\u4e48\u3001\u5e94\u8be5\u505a\u4ec0\u4e48\u51c6\u5907,\u524d\u8f88\u662f\u600e\u4e48\u56de\u7b54\u7684? \r\n \r\n**A:** 1\u9762\u662f\u7f51\u4e0aWeb Programming, \u7136\u540e\u901a\u8fc7\u4e50\u5929\u7684\u7f51\u7ad9\u8fdb\u884c\u3010\u7f51\u7edc\u9762\u8bd5\r\n\uff0c\u4f46\u662f\u95ee\u9898\u4f1a\u63d0\u524d\u53d1\u7ed9\u5927\u5bb6, \u8ba9\u5927\u5bb6\u51c6\u5907\u597d\u3002\r\n \r\n**Q:** \u8fdb\u53bb\u4e4b\u540e\u538b\u529b\u4f1a\u5f88\u5927\u5417\uff1f\r\n \r\n**A:** \u636e\u8bf4\u5f88\u4e0d\u5927,\u56e0\u4e3a\u5f88\u591a\u5916\u56fd\u4eba, \u5927\u5bb66\u70b9\u51c6\u65f6\u56de\u5bb6\u505a\u996d\r\n \r\n**Q:** \u90e8\u95e8\u4e4b\u95f4\u53ef\u4ee5\u8f6c\u6362\u5417?\u664b\u5347\u5462? \r\n \r\n**A:** \u53ef\uff0c\u4f46\u662f\u4e00\u822c\u539f\u5219\u662f\u540c\u4e00\u90e8\u95e8\u5de5\u4f5c\u4e09\u5e74\u4ee5\u4e0a\r\n \r\n**Q:** \u82f1\u8bed\u5f88\u5dee\u662f\u4e0d\u662f\u5f88\u4e0d\u5229\uff1f Business\u4e00\u822c\u4f1a\u5148\u5206\u914d\u5230\u4ec0\u4e48\u90e8\u95e8\u548c\u804c\u79cd?\r\n \r\n **A:** \u6839\u636e\u90e8\u95e8\u4e0d\u540c,\u5982\u679c\u8fd9\u4e2a\u90e8\u95e8\u7684leader\u662f\u65e5\u672c\u4eba,\u90a3\u4e48\u5de5\u4f5c\u8bed\u8a00\u5c31\u662f\u65e5\u8bed,\u5982\u679c\u662f\u5916\u56fd\u4eba, \u5c31\u662f\u82f1\u8bed \r\n\r\n**Q:** \u52a0\u73ed\u591a\u5417? \r\n\r\n **A:** \u5165\u793e\u521a\u5f00\u59cb\u8fd8\u597d,\u57fa\u672c\u4e0a6:00 - 8:00 \u4e4b\u95f4\r\n \r\n**Q**: \u798f\u5229\u5f85\u9047\u600e\u4e48\u6837?\r\n \r\n**A:** \u5de5\u8d44\u6bd4\u4e00\u822c\u65b0\u5352\u8981\u9ad8, \u65e9\u9910, \u5348\u9910, \u665a\u9910\u514d\u8d39!! \r\n \r\n**Q:**  \u7ec8\u9762\u4e4b\u524d\u6709\u4e00\u6b21GD\u662f\u4e0d\u662f?\r\n\r\n**A:** \u53bb\u5e74\u6ca1\u6709\r\n\r\n**Q:**  \u9762\u8bd5\u7684\u65f6\u5019\u4f1a\u4e0d\u4f1a\u95ee\u9053\u5176\u4ed6\u5fd7\u613f,\u6bd4\u5982\u8bf4\u4e3a\u4ec0\u4e48\u9009\u4e50\u5929\u4e3a\u4ec0\u4e48\u4e0d\u662f\u4e9a\u9a6c\u900a?\u4e3a\u4ec0\u4e48\u4e0d\u53bb\u963f\u91cc\u5df4\u5df4?\r\n**A:** \u6ca1\u6709\u88ab\u95ee\u5230\r\n\r\n**Q:** \u88ab\u95ee\u5230\u3084\u308a\u305f\u3044\u3053\u3068,\u4e24\u4f4d\u662f\u600e\u4e48\u56de\u7b54\u7684\u5462?\r\n\r\n**A:** \u6211\u5f88\u76f4\u63a5\u7684\u8bf4,\u60f3\u505a\u4e0esmartphone\u6709\u5173\u7684\u5de5\u4f5c\r\n\r\n**Q:** 2015\u62db\u4e86\u591a\u5c11\u4eba\u5462? \u5404\u90e8\u95e8\u5206\u914d\u662f\u600e\u4e48\u6837\u7684? \u5c24\u5176\u60f3\u77e5\u9053\u4e50\u5929\u5e02\u573a\u548c\u4e50\u5929\u65c5\u6e38\u7684\u5206\u914d\u60c5\u51b5? \u6709\u591a\u5c11\u5916\u56fd\u4eba\u5462?\r\n\r\n**A:** 3\u6708\u4efd\u793e\u7684\u6709\u5927\u6982300\u591a\u4eba, 1:5\u5dee\u4e0d\u591a\u3002\u5173\u4e8e\u5206\u914d\u7684\u8bdd,\u5f97\u5165\u804c\u4e4b \u540e\u57f9\u8bad\u7ed3\u675f\u4e4b\u540e\u624d\u80fd\u77e5\u9053\u3002\r\n\r\n**Q:**  \u9762\u8bd5\u6c14\u6c1b\u5f88\u4e25\u8083\u5417?\r\n\r\n**A:** \u7ec8\u9762\u975e\u5e38\u4e25\u8083,\u5176\u4ed6\u8fd8\u53ef\u4ee5\r\n"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u4e03\u8054\u5c31\u804c\u793e"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/qilian.jp\/appointment\/img\/original\/news-thumbnail-OBOG_rakuten_boy.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"page_views"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"page_likes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-21 14:00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-23 09:20:51"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"PostsCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"557"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"post_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"558"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"post_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"559"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"post_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>获取指定分类下的所有资讯(分页，每页显示10条)</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://qilian.jp/appointment/api/news_search.json?q=&lt;KEYWORDS&gt;&amp;page=&lt;PAGE_ID&gt;</code></p>
+
+<h3 id="results-parameters">Results Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>q</td>
+<td>搜索关键词</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>当前分类所有文章总数</td>
+</tr>
+<tr>
+<td>pageCount</td>
+<td>当前分类总页数(每页显示10条)</td>
+</tr>
+<tr>
+<td>currentPage</td>
+<td>当前所在页</td>
+</tr>
+<tr>
+<td>currentPageSum</td>
+<td>当前页面共有资讯数量</td>
+</tr>
+</tbody></table>
+
+          <h1 id="errors">Errors</h1>
+
+<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified kitten could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&rsquo;m a teapot</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="php">php</a>
+                <a href="#" data-language-name="swift">swift</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

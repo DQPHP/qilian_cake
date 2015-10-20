@@ -1,0 +1,41 @@
+/*
+ * Copyright 2015 QiLIan
+ * Contributing author: davidBera
+ */
+
+/* ====================================================================================================================
+ *  tab redefinition
+ * ====================================================================================================================*/
+
+
+
+.panel-heading{
+	padding: 0px;
+}
+
+/* overide nav-justified in bootstrap.css: 取消border*/
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:focus {
+  border: none;
+}
+
+/* 最下方的横线 */
+.nav-tabs { border-bottom: 1px solid #DDD; }
+
+/* 背景，border无 */
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; background:#fafafa;  }
+
+.nav-tabs > li > a { border: none; color: #666; }
+
+.nav-tabs > li > a:visited { background-color:  red; }
+
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #2ecc71 !important; background: #fafafa;  }
+
+.nav-tabs > li > a::after { content: ""; background: #2ecc71; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+
+.nav-tabs > li.active:hover > a::after { transform: scale(1); }
+
+.nav-tabs > li > a::after { background: #29b664 none repeat scroll 0% 0%; color: #fafafa; }
