@@ -1,13 +1,44 @@
-CakePHP 3
-
-/vendor/*
-/config/app.php
-/tmp/*
-/logs/*
-
 CakePHP 2
 
 /app/tmp/*
 /app/Config/core.php
 /app/Config/database.php
 /vendors/*
+
+# User specific & automatically generated files #
+#################################################
+/lib/Cake/Console/Templates/skel/tmp/
+/plugins
+/build
+/dist
+/tags
+*.mo
+
+# IDE and editor specific files #
+#################################
+/nbproject
+.idea
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# qilian project
+#####################
+/lib
+/build.properties
+/build.xml
+/.travis.yml
+/.htaccess
+/.editorconfig
+/.gitattributes
+/CONTRIBUTING.md
+/composer.json
+/sftp-config.json
